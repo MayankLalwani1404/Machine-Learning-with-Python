@@ -33,3 +33,39 @@ Key Implementation Features
 
 Results
 The AI successfully achieves 60%+ win rates against all four opponent types, with some strategies achieving 80-99% win rates.
+
+Project 2: Cat vs Dog Image Classifier
+
+Overview
+A Convolutional Neural Network (CNN) built with TensorFlow/Keras to classify images of cats and dogs. Achieved 68% accuracy, surpassing the 63% requirement and approaching the 70% extra credit goal.
+
+Dataset
+•  Training: 2,000 images (1,000 cats + 1,000 dogs)
+•  Validation: 1,000 images (500 cats + 500 dogs)  
+•  Test: 50 unlabeled images
+•  Image size: 150×150 pixels, RGB format
+
+Model Architecture
+Deep CNN with VGG-style blocks:
+•  Conv Block 1: 32→32 filters, MaxPool, Dropout(0.25)
+•  Conv Block 2: 64→64 filters, MaxPool, Dropout(0.25)
+•  Conv Block 3: 128→128 filters, MaxPool, Dropout(0.25)
+•  Dense Layers: 512→256→1 with Dropout(0.5)
+•  Output: Sigmoid activation for binary classification
+•  Total Parameters: ~5.8 million
+
+Key Features
+✅ Data Augmentation: Rotation, shifts, shear, zoom, horizontal flip  
+✅ Regularization: Strategic dropout placement to prevent overfitting  
+✅ Optimized Training: Adam optimizer with 0.0001 learning rate, 25 epochs  
+✅ VGG Architecture: Double conv layers for better feature extraction  
+
+Results
+•  Final Accuracy: 68% on test set
+•  Status: ✅ PASSED (Required: 63%, Extra Credit: 70%)
+•  Training Time: ~25 epochs with batch size 128
+
+Technologies
+•  TensorFlow 2.x & Keras
+•  Python with NumPy, Matplotlib
+•  Image Processing with ImageDataGenerator
