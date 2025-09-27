@@ -103,3 +103,39 @@ Managed edge cases such as self-recommendation and empty matrices from over-filt
 Verification:
 
 Successfully verified the model's output with expected top 5 recommendations for test cases, adhering to challenge constraints (including reversed order for grading purposes).
+
+# Project 4: Healthcare Cost Prediction with Neural Networks
+
+Predicts individual healthcare insurance costs using deep learning regression. **MAE: $2,879.97** ✅
+
+## 🎯 Results
+- **Accuracy**: 78.3% | **MAE**: $2,879.97 (target: <$3,500)
+- **Dataset**: 1,338 records, 9 features | **Model**: 11,649 parameters
+- **Features**: Age, sex, BMI, children, smoker, region → Healthcare costs ($1K-$64K)
+
+## 🧠 Architecture
+```
+9 → 128 → 64 → 32 → 1 (ReLU + Dropout)
+TensorFlow/Keras | Adam optimizer | 200 epochs
+```
+
+## 💻 Usage
+```python
+model = keras.Sequential([
+    layers.Dense(128, activation='relu', input_shape=[9]),
+    layers.Dropout(0.3),
+    layers.Dense(64, activation='relu'), 
+    layers.Dense(32, activation='relu'),
+    layers.Dense(1)
+])
+```
+
+## 🏆 Challenge
+✅ **FreeCodeCamp ML Challenge Passed** - MAE $620 below requirement
+
+## 📊 Key Insights
+- Smoking = strongest predictor (0.787 correlation)
+- Age/BMI = moderate predictors | Region = minimal impact
+- Neural network captures non-linear cost relationships
+
+**Tech**: TensorFlow, Pandas, Scikit-learn | **Files**: `*.ipynb`, `insurance.csv`
