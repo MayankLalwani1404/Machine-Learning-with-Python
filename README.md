@@ -69,3 +69,37 @@ Technologies
 •  TensorFlow 2.x & Keras
 •  Python with NumPy, Matplotlib
 •  Image Processing with ImageDataGenerator
+
+Project 3: Book Recommendation System (K-Nearest Neighbors)
+
+This project develops a book recommendation system using K-Nearest Neighbors (KNN) on the Book-Crossings dataset. The goal is to suggest similar books based on user ratings, utilizing a title-by-user matrix and cosine distance to find the nearest neighbors. Key highlights include:
+
+Data Cleaning & Preprocessing:
+
+Tackled CSV parsing issues (single-column problem) caused by delimiter/encoding quirks.
+
+Developed a cleaning script to standardize the data, ensuring proper handling of semicolons, commas, and ISO-8859-1 encoding.
+
+Filtered the data to include only users with ≥200 ratings and books with ≥100 ratings.
+
+Matrix Construction:
+
+Built a title-by-user rating matrix using mean ratings, filling missing values with 0 to preserve zero ratings post-filtering.
+
+Evaluated both binary co-rating and average rating approaches before settling on the latter.
+
+K-Nearest Neighbors Model:
+
+Implemented KNN with a cosine distance metric using the NearestNeighbors algorithm.
+
+Ensured results were returned as raw cosine distances (not similarity) and reversed the recommendation list to match grader expectations.
+
+API for Book Recommendations:
+
+Developed a function get_recommends(title) that returns 5 similar books to a given title, along with their cosine distances.
+
+Managed edge cases such as self-recommendation and empty matrices from over-filtering.
+
+Verification:
+
+Successfully verified the model's output with expected top 5 recommendations for test cases, adhering to challenge constraints (including reversed order for grading purposes).
