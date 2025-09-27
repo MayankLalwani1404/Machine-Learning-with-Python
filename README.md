@@ -209,3 +209,39 @@ scikit-learn
 ---
 
 *This project demonstrates proficiency in deep learning, data preprocessing, and regression analysis for healthcare cost prediction.*
+
+# Project 5: SMS Spam Classification with LSTM
+
+A deep learning model that classifies SMS messages as legitimate ("ham") or spam using TensorFlow/Keras. Built for the FreeCodecamp Machine Learning certification challenge.
+
+## 🚀 Features
+- **LSTM Neural Network** with 1.3M parameters for sequential text processing
+- **97-99% accuracy** on SMS Spam Collection dataset
+- **Real-time prediction** with confidence scores
+- **Robust preprocessing** with OOV handling and sequence padding
+
+## 📊 Dataset
+- **5,574 SMS messages** (87% ham, 13% spam)
+- Text sequences processed to 150 tokens max
+- 10,000-word vocabulary with embedding layer
+
+## 🏗️ Architecture
+- Embedding (10k vocab → 128d) → LSTM (64 units) → Dense (32) → Sigmoid (1)
+
+## 🔧 Tech Stack
+- **TensorFlow/Keras** - Deep learning framework
+- **Python** - Core language
+- **scikit-learn** - Label encoding
+- **Pandas/NumPy** - Data manipulation
+
+## 📈 Performance
+- **Binary Classification** with 0.5 threshold
+- **Adam optimizer** with binary crossentropy loss
+- **Dropout regularization** (50%) to prevent overfitting
+
+The model achieves high accuracy due to the LSTM's ability to capture sequential patterns in text that distinguish spam (promotional language, urgency, contact info) from legitimate personal communications.
+
+## 💡 Usage
+```python
+prediction = predict_message("Your SMS text here")
+# Returns: [probability_score, "ham"/"spam"]
