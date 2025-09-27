@@ -104,38 +104,108 @@ Verification:
 
 Successfully verified the model's output with expected top 5 recommendations for test cases, adhering to challenge constraints (including reversed order for grading purposes).
 
-# Project 4: Healthcare Cost Prediction with Neural Networks
+# Healthcare Cost Prediction with Neural Networks
 
-Predicts individual healthcare insurance costs using deep learning regression. **MAE: $2,879.97** ✅
+A machine learning project that predicts individual healthcare insurance costs using demographic and health factors through deep neural network regression.
 
-## 🎯 Results
-- **Accuracy**: 78.3% | **MAE**: $2,879.97 (target: <$3,500)
-- **Dataset**: 1,338 records, 9 features | **Model**: 11,649 parameters
-- **Features**: Age, sex, BMI, children, smoker, region → Healthcare costs ($1K-$64K)
+## 📊 Project Overview
 
-## 🧠 Architecture
+This project implements a neural network to predict healthcare costs based on personal attributes. The model successfully achieves a Mean Absolute Error of **$2,879.97**, meeting the challenge requirement of MAE < $3,500.
+
+## 🎯 Key Results
+
+- **Model Accuracy**: 78.3% prediction accuracy
+- **Mean Absolute Error**: $2,879.97
+- **Dataset Size**: 1,338 insurance records
+- **Features**: 9 processed features from demographic and health data
+- **Neural Network**: 4-layer deep learning model with 11,649 parameters
+
+## 📁 Dataset Features
+
+The model uses the following input features:
+- **Demographics**: Age (18-64), Sex, Region (4 US regions)
+- **Health Metrics**: BMI (16.0-53.1), Number of children (0-5)
+- **Lifestyle**: Smoking status (primary cost predictor)
+- **Target**: Healthcare insurance expenses ($1,122 - $63,770)
+
+## 🧠 Model Architecture
+
 ```
-9 → 128 → 64 → 32 → 1 (ReLU + Dropout)
-TensorFlow/Keras | Adam optimizer | 200 epochs
+Input Layer:    9 → 128 neurons (ReLU + 30% Dropout)
+Hidden Layer 1: 128 → 64 neurons (ReLU + 30% Dropout)  
+Hidden Layer 2: 64 → 32 neurons (ReLU)
+Output Layer:   32 → 1 neuron (Linear regression)
+Total Parameters: 11,649
 ```
+
+## 🚀 Technical Implementation
+
+- **Framework**: TensorFlow/Keras
+- **Preprocessing**: StandardScaler normalization, one-hot encoding
+- **Train/Test Split**: 80/20 (1,070/268 samples)
+- **Optimization**: Adam optimizer with MSE loss
+- **Training**: 200 epochs with validation monitoring
+- **Regularization**: Dropout layers to prevent overfitting
+
+## 📈 Performance Metrics
+
+- **Mean Absolute Error**: $2,879.97
+- **Error Rate**: 21.7% of mean healthcare cost
+- **Range Coverage**: 4.6% of total cost range
+- **Feature Correlation**: Smoking (0.787), Age (0.299), BMI (0.199)
 
 ## 💻 Usage
+
 ```python
+# Load and preprocess data
+dataset = pd.read_csv('insurance.csv')
+# ... preprocessing steps
+
+# Build model
 model = keras.Sequential([
     layers.Dense(128, activation='relu', input_shape=[9]),
     layers.Dropout(0.3),
-    layers.Dense(64, activation='relu'), 
+    layers.Dense(64, activation='relu'),
+    layers.Dropout(0.3),
     layers.Dense(32, activation='relu'),
     layers.Dense(1)
 ])
+
+# Train and evaluate
+model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+model.fit(train_dataset, train_labels, epochs=200)
 ```
 
-## 🏆 Challenge
-✅ **FreeCodeCamp ML Challenge Passed** - MAE $620 below requirement
+## 🏆 Challenge Completion
+
+✅ **Passed FreeCodeCamp Machine Learning Challenge**
+- Required: MAE < $3,500
+- Achieved: MAE = $2,879.97
+- Success margin: $620.03 below requirement
+
+## 📋 Files
+
+- `fcc_predict_health_costs_with_regression.ipynb` - Main Jupyter notebook
+- `insurance.csv` - Healthcare cost dataset
+- `README.md` - Project documentation
+
+## 🛠️ Dependencies
+
+```
+tensorflow>=2.0
+pandas
+numpy
+matplotlib
+scikit-learn
+```
 
 ## 📊 Key Insights
-- Smoking = strongest predictor (0.787 correlation)
-- Age/BMI = moderate predictors | Region = minimal impact
-- Neural network captures non-linear cost relationships
 
-**Tech**: TensorFlow, Pandas, Scikit-learn | **Files**: `*.ipynb`, `insurance.csv`
+- **Smoking status** is the strongest predictor of healthcare costs (5x impact)
+- **Age and BMI** show moderate correlation with expenses  
+- **Geographic region** has minimal impact on costs
+- **Neural network** effectively captures non-linear relationships
+
+---
+
+*This project demonstrates proficiency in deep learning, data preprocessing, and regression analysis for healthcare cost prediction.*
