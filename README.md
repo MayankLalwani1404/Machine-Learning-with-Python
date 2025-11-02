@@ -397,7 +397,7 @@ model.fit(train_dataset, train_labels, epochs=200)
 ✅ **Passed FreeCodeCamp Machine Learning Challenge**
 - Required: MAE < $3,500
 - Achieved: MAE = $2,879.97
-- Success margin: $620.03 below requirement
+- Success margin: $620.03 below the requirement
 
 ## 📋 Files
 
@@ -428,7 +428,7 @@ scikit-learn
 
 # Project 5: SMS Spam Classification with LSTM
 
-A deep learning model that classifies SMS messages as legitimate ("ham") or spam using TensorFlow/Keras. Built for the FreeCodecamp Machine Learning certification challenge.
+A deep learning model that classifies SMS messages as legitimate ("ham") or spam using TensorFlow/Keras. Built for the FreeCodeCamp Machine Learning certification challenge.
 
 ## 🚀 Features
 - **LSTM Neural Network** with 1.3M parameters for sequential text processing
